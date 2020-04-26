@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt')
 const bcryptSalt = 10
 const salt = bcrypt.genSaltSync(bcryptSalt)
 
-mongoose.connect(`mongodb://localhost/${process.env.DB}`, { useUnifiedTopology: true, useNewUrlParser: true })
+const dbtitle = 'Ya-Va-Database'
+mongoose.connect(`mongodb://localhost/${dbtitle}`, { useUnifiedTopology: true, useNewUrlParser: true })
 
 User.collection.drop()
 Collaboration.collection.drop()
