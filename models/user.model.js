@@ -2,8 +2,31 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    username: String,
-    password: String
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['pending', 'active'],
+        default: 'pending'
+    },
+    knowledge: {
+        type: [String],
+        enum: ['shopping', 'displacement', 'company', 'caring', 'technology', 'Housework', 'DIY']
+    },
+    verificationToken: String,
+    recuperationToken: String
 }, {
     timestamps: true
 })
