@@ -3,6 +3,7 @@
 "Ya-Va" is project created by two web development students. 
 
 It's a platform that provides a simple and easier way of collaboration to both people who want to collaborate and people who look for collaboration. 
+
 Collaborating has never been so easy!
 
 ## End Points
