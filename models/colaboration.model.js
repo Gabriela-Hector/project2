@@ -1,15 +1,34 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const colaborationSchema = new Schema({
+const collaborationSchema = new Schema({
     colaborationType: {
         type: String,
         required: true,
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    telephoneNumber: {
+        type: String,
+        required: true,
+    },
+    helperId: Schema.Types.ObjectId,
+    coordinates: {
+        type: [Number],
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['pending', 'accept', 'completed'],
+        required: true,
+        default: 'pending'
     }
 }, {
     timestamps: true
 })
 
-const Colaboration = mongoose.model("Colaboration", colaborationSchema)
+const Collaboration = mongoose.model("Collboration", collaborationSchema)
 
-module.exports = Colaboration
+module.exports = Collaboration
