@@ -2,23 +2,20 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const collaborationSchema = new Schema({
-    colaborationType: {
+    collaborationType: {
         type: String,
         enum: ['shopping', 'displacement', 'company', 'caring', 'technology', 'Housework', 'DIY', 'other'],
         required: true,
     },
-    description: {
-        type: String,
-        required: true
-    },
+    description: String,
     telephoneNumber: {
         type: String,
         required: true,
     },
     helperId: Schema.Types.ObjectId,
-    coordinates: {
-        type: [Number],
-        required: true
+    location: {
+        type: { type: String },
+        coordinates: [Number]
     },
     status: {
         type: String,
@@ -30,6 +27,6 @@ const collaborationSchema = new Schema({
     timestamps: true
 })
 
-const Collaboration = mongoose.model("Collboration", collaborationSchema)
+const Collaboration = mongoose.model("Collaboration", collaborationSchema)
 
 module.exports = Collaboration
