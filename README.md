@@ -1,6 +1,10 @@
 # Ya-Va Project
 
-Foobar is a Python library for dealing with word pluralization.
+Ya-Va is new project created by two web development students. 
+
+It's a platform that provides a simple and easier way of collaboration to both people who want to collaborate and people who look for collaboration. 
+
+Collaborate has never been so easy!
 
 ## End Points
 
@@ -20,8 +24,8 @@ ID | Method | Path | Description |
 12 | POST | /recuperacion | Envia email de recuperación y renderiza vista de confirmación de envío de recuperación |
 13 | GET | /recuperacion/:codigoRecuperacion | Renderiza a la vista de “nueva contraseña” |
 14 | POST | /recuperacion/:userID | Actualiza la contraseña del usuario en la BBDD y redirige a la vista de “inicio de sesión” |
-15 | GET | /colaboracion/:idColab/aceptar |  |
-16 | GET | /colaboracion/:idColab/completar |  |
+15 | GET | /colaboracion/:idColab/aceptar | Asigna un helper a una petición |
+16 | GET | /colaboracion/:idColab/completar | Cambia el estado de la petición a completado |
 
 ## Creators
 
