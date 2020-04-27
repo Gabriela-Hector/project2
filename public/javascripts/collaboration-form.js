@@ -1,6 +1,7 @@
 getLocation = () => {
 
     const inputLocation = document.querySelector('.geolocation input')
+    const searchBox = new google.maps.places.SearchBox(inputLocation);
 
     if (navigator.geolocation) {
 
@@ -26,4 +27,7 @@ getLocation = () => {
     } else {
         console.error("El navegador no dispone de geolocalizador")
     }
+    
+    // SearchBox adress is changed
+    // searchBox.addListener('places_changed', () => console.log('el nuevo lugar es', searchBox.getPlaces()))
 }
