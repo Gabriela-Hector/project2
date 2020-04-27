@@ -1,5 +1,7 @@
 getLocation = () => {
 
+    const inputLocation = document.querySelector('.geolocation input')
+
     if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(
@@ -11,6 +13,7 @@ getLocation = () => {
                         if (status === 'OK') {
                             if (results[0]) {
                                 console.log('La calle es', results[0])
+                                inputLocation.value = results[0].formatted_address
                             }
                         } else {
                             console.error("No se puedo obtener la localización:")
