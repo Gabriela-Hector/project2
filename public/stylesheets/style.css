@@ -26,5 +26,9 @@ h1, h2, h3 {
   #collaboration-form select {
     text-align: center;
     border: none; }
+#logo-yava {
+  display: block;
+  width: 200px;
+  margin: auto; }
 
 /*# sourceMappingURL=style.css.map */
