@@ -25,9 +25,7 @@ h1, h2, h3 {
   background: palevioletred;
     padding: 3%;
     margin-bottom: 1%;
-} .knowledge-button:hover {
-  
-}
+} 
 
 #collaboration-form{
   text-align: center;
@@ -36,8 +34,29 @@ h1, h2, h3 {
     border: none;
   }
 }
+
 #logo-yava {
       display: block;
     width: 200px;
     margin: auto;
 } 
+
+#signup-form .custom-select {
+  text-align: center;
+    border: none;
+}
+
+
+.button-collab {
+text-align: center;
+    margin: 5%;
+} p {
+  text-align: center;
+}
+
+.glide {
+  margin-top: 5%;
+}
+
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
