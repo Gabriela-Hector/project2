@@ -26,6 +26,7 @@ const collaborationSchema = new Schema({
 }, {
     timestamps: true
 })
+placesSchema.index({ location: '2dsphere' });
 
 const Collaboration = mongoose.model("Collaboration", collaborationSchema)
 
