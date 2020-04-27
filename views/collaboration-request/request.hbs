@@ -6,8 +6,8 @@
         <form id="collaboration-form" action="/collaboration-request" method="POST">
 
             <div class="form-group">
-                <label for="field5">Necesito ayuda con:</label>
-                <select name="" size="9" class="custom-select" required="true">
+                <label for="field1">Necesito ayuda con:</label>
+                <select name="collaborationType" id="field1" size="9" class="custom-select" required="true">
                     <option class="knowledge-button" value="shopping">Compras y recados</option>
                     <option class="knowledge-button" value="displacement">Desplazamientos</option>
                     <option class="knowledge-button" value="company">Acompañamiento</option>
@@ -19,6 +19,11 @@
                 </select>
             </div>
 
+            <div class="form-group geolocation">
+                <label for="field2">Confirma tu posición:</label>
+                <input name="position" type="text" class="form-control" id="field2">
+            </div>
+
             <button type="submit" class="btn btn-dark btn-block btn-lg">Confirmar</button>
 
             {{#if errorMsg}}
@@ -27,3 +32,6 @@
         </form>
     </div>
 </div>
+
+<script src="js/directions.js"> </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&callback=initMap"></script>
