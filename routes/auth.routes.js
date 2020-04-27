@@ -45,11 +45,8 @@ router.post('/login', passport.authenticate("local", {
     passReqToCallback: true,
     badRequestMessage: 'Rellena todos los campos'
 }))
-
-// User profile
-
-router.get('/profile', (req, res) => res.render('auth/profile'))
-
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('index', { loginErrorMessage: 'Acceso restringido' })
+router.get('/profile', checkLoggedIn, (req, res) => res.redirect(`/${req.user.username}`))
 
 
 // User logout

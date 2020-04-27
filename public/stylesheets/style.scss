@@ -1,13 +1,15 @@
 body {
-  font-weight: 200;
+  font-weight: 100;
+  background: #aee8db
 }
 
 h1, h2, h3 {
   font-weight: 200;
+  color: #fff;
 }
 
-.navbar {
-  margin-bottom: 70px;
+p {
+  color: #fff;
 }
 
 #errorMsg {
@@ -19,14 +21,11 @@ h1, h2, h3 {
   margin-top: 5px;
 }
 
-.index-h2 {
-  text-align: center;
-}
-
+/* --- SIGN UP & COLLABORATION --- */
 
 .knowledge-button {
   color: white;
-  background: palevioletred;
+  background: #7ab4de;
     padding: 3%;
     margin-bottom: 1%;
 } 
@@ -36,47 +35,98 @@ h1, h2, h3 {
   select{   
     text-align: center;
     border: none;
+    background: none;
   }
 }
-
-#logo-yava {
-      display: block;
-    width: 200px;
-    margin: auto;
-} 
 
 #signup-form .custom-select {
   text-align: center;
     border: none;
 }
+label {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 100;
+}
+/* --- INDEX --- */
+
+.text-index{
+  transform: translateY(120px);
+  font-size: 19px;
+}
+
+#logo-yava {
+    display: block;
+    width: 250px;
+    margin: auto;
+    transform: translate(0, 50px);
+} 
+
+.span {
+  font-weight: 700;
+  font-size: 20px;
+}
 
 
 .button-collab {
-text-align: center;
-    margin: 5%;
-}.link {
-
-  background-color: #63bfc7;
-    color: #fff;
-    padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    font-weight: 600;
-
-} .link:hover {
-    text-decoration: none;
-    color: #fff;
-    background:#b3e4e8;
-
-}p {
+    transform: translateY(85px);
+    background: rgba(34,34,34,0.1);
+    border-radius: 8px;
+    padding: 3%;
+}
+ p {
   text-align: center;
 }
+
+.index-h2 {
+  text-align: center;
+}
+
+
+.row {
+  margin-top: 70px;
+}
+
+#signup-form .custom-select {
+    text-align: center;
+    border: none;
+    background: none;
+}
+
+/* --- GLIDE PROFILE --- */
+
+.myButton {
+	    background: linear-gradient(to bottom, #7ab4de 5%, #7ab4de 100%);
+    background-color: #7ab4de;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 9px 68px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #ffffff;
+    margin: 4%;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #7ab4de 5%, #7ab4de 100%);
+	background-color:#7ab4de;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+       
 
 .glide {
   margin-top: 5%;
 }
+ 
 
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";

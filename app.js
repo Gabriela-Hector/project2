@@ -21,5 +21,6 @@ require('./configs/locals.config')(app)
 app.use('/', require('./routes/index.routes'))
 app.use('/', require('./routes/auth.routes'))
 app.use('/collaboration-request', require('./routes/collaboration-request.routes'))
+app.use('/', require('./routes/profile.routes'))
 
 module.exports = app
