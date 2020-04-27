@@ -7,7 +7,7 @@ const collaborationSchema = new Schema({
         enum: ['shopping', 'displacement', 'company', 'caring', 'technology', 'Housework', 'DIY', 'other'],
         required: true,
     },
-    description: String,
+    audioDescription: String,
     telephoneNumber: {
         type: String,
         required: true,

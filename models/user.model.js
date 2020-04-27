@@ -25,6 +25,10 @@ const userSchema = new Schema({
         type: [String],
         enum: ['shopping', 'displacement', 'company', 'caring', 'technology', 'Housework', 'DIY']
     },
+    description: String,
+    profilePic: {
+        type: String
+    },
     verificationToken: String,
     recuperationToken: String
 }, {
