@@ -21,4 +21,9 @@ h1, h2, h3 {
   padding: 3%;
   margin-bottom: 1%; }
 
+#logo-yava {
+  display: block;
+  width: 200px;
+  margin: auto; }
+
 /*# sourceMappingURL=style.css.map */
