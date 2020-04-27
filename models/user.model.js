@@ -19,7 +19,7 @@ const userSchema = new Schema({
     status: {
         type: String,
         enum: ['pending', 'active'],
-        default: 'pending'
+        default: 'active'
     },
     knowledge: {
         type: [String],

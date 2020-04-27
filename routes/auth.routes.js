@@ -12,7 +12,7 @@ const bcryptSalt = 10
 router.get("/signup", (req, res) => res.render("auth/signup"))
 router.post("/signup", (req, res, next) => {
 
-    const { username, password } = req.body
+    const { username, email, password, status, knowledge } = req.body
 
     if (!username || !password) {
         res.render("auth/signup", { errorMsg: "Rellena el usuario y la contraseña" })
@@ -28,9 +28,9 @@ router.post("/signup", (req, res, next) => {
             const salt = bcrypt.genSaltSync(bcryptSalt)
             const hashPass = bcrypt.hashSync(password, salt)
 
-            User.create({ username, password: hashPass })
-                .then(() => res.redirect("/"))
-                .catch(() => res.render("auth/signup", { errorMsg: "No se pudo crear el usuario" }))
+            User.create({ username, email, password: hashPass, status, knowledge })
+                .then(() => res.redirect("/profile"))
+                .catch((err) => res.render("auth/signup", { errorMsg: "No se pudo crear el usuario" }))
         })
         .catch(error => next(error))
 })
@@ -39,12 +39,17 @@ router.post("/signup", (req, res, next) => {
 // User login
 router.get('/login', (req, res) => res.render('auth/login', { "errorMsg": req.flash("error") }))
 router.post('/login', passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/profile",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true,
     badRequestMessage: 'Rellena todos los campos'
 }))
+
+// User profile
+
+router.get('/profile', (req, res) => res.render('auth/profile'))
+
 
 
 // User logout
