@@ -36,8 +36,22 @@ h1, h2, h3 {
     border: none;
   }
 }
+
 #logo-yava {
       display: block;
     width: 200px;
     margin: auto;
 } 
+
+#signup-form .custom-select {
+  text-align: center;
+    border: none;
+}
+
+
+.button-collab {
+text-align: center;
+    margin: 5%;
+} p {
+  text-align: center;
+}
