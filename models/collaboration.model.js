@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const collaborationSchema = new Schema({
     collaborationType: {
         type: String,
-        enum: ['shopping', 'displacement', 'company', 'caring', 'technology', 'Housework', 'DIY', 'other'],
+        enum: ['shopping', 'displacement', 'company', 'caring', 'technology', 'housework', 'DIY', 'other'],
         required: true,
     },
     audioDescription: String,
