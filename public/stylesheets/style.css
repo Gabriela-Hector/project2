@@ -29,18 +29,12 @@ p {
   text-align: center; }
   #collaboration-form select {
     text-align: center;
-    border: none; }
+    border: none;
+    background: none; }
   #collaboration-form #lat {
     display: none; }
   #collaboration-form #lng {
     display: none; }
-
-#logo-yava {
-  display: block;
-  width: 200px;
-  margin: auto; 
-    border: none;
-    background: none; }
 
 #signup-form .custom-select {
   text-align: center;
