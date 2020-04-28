@@ -1,13 +1,16 @@
 body {
-  font-weight: 200;
+  text-align: center;
+  font-weight: 100;
+  background: #ffb142
 }
 
 h1, h2, h3 {
   font-weight: 200;
+  color: #fff;
 }
 
-.navbar {
-  margin-bottom: 70px;
+p {
+  color: #fff;
 }
 
 #errorMsg {
@@ -19,10 +22,11 @@ h1, h2, h3 {
   margin-top: 5px;
 }
 
+/* --- SIGN UP & COLLABORATION --- */
 
 .knowledge-button {
   color: white;
-  background: palevioletred;
+  background: #cc8e35;
     padding: 3%;
     margin-bottom: 1%;
 } 
@@ -32,6 +36,7 @@ h1, h2, h3 {
   select{   
     text-align: center;
     border: none;
+    background: none;
   }
   #lat{
     display: none;
@@ -41,28 +46,98 @@ h1, h2, h3 {
   }
 }
 
-#logo-yava {
-      display: block;
-    width: 200px;
-    margin: auto;
-} 
-
 #signup-form .custom-select {
   text-align: center;
     border: none;
 }
+label {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 100;
+}
+/* --- INDEX --- */
+
+.text-index{
+  transform: translateY(120px);
+  font-size: 19px;
+}
+
+#logo-yava {
+    display: block;
+    width: 250px;
+    margin: auto;
+    transform: translate(0, 50px);
+} 
+
+.span {
+  font-weight: 500;
+  font-size: 30px;
+}
 
 
 .button-collab {
-text-align: center;
-    margin: 5%;
-} p {
+    text-align: center;
+    transform: translateY(85px);
+    background: rgba(34,34,34,0.1);
+    border-radius: 8px;
+    padding: 3%;
+}
+ p {
   text-align: center;
 }
+
+.index-h2 {
+  text-align: center;
+}
+
+
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.row {
+  margin-top: 70px;
+}
+
+#signup-form .custom-select {
+    text-align: center;
+    border: none;
+    background: none;
+}
+
+/* --- GLIDE PROFILE --- */
+
+.myButton {
+      width: 90%;
+	    background: linear-gradient(to bottom, #34ace0  5%, #34ace0 100%);
+    background-color: #34ace0;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 9px 68px;
+    text-decoration: none;
+    margin: 4%;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #34ace0 5%, #34ace0 100%);
+	background-color:#34ace0;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+       
 
 .glide {
   margin-top: 5%;
 }
 
+
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
