@@ -1,12 +1,13 @@
 body {
   text-align: center;
   font-weight: 100;
-  background: #99debf
+  background: #fffefa;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-weight: 200;
-  color: #fff;
+    color: #404040;
+    margin-bottom: 5%;
 }
 
 
@@ -22,10 +23,11 @@ h1, h2, h3 {
 /* --- SIGN UP & COLLABORATION --- */
 
 .knowledge-button {
-  color: white;
-  background: #fee698;
-    padding: 3%;
+        padding: 3%;
     margin-bottom: 1%;
+    background: #a7a6ff;
+    color: #fff;
+    border-radius: 20px;
 } 
 
 #collaboration-form{
@@ -47,24 +49,31 @@ h1, h2, h3 {
   text-align: center;
     border: none;
 }
-label {
-  color: #fff;
-  font-size: 15px;
-  font-weight: 100;
-}
+
 /* --- INDEX --- */
+
 
 .text-index{
   transform: translateY(120px);
-  font-size: 19px;
+  font-size: 19px; 
+} .span-2 {
+  font-size: 20px;
 }
+
+
 
 #logo-yava {
     display: block;
     width: 250px;
     margin: auto;
-    transform: translate(0, 50px);
+    transform: translate(0, 60px);
 } 
+
+.helps img {
+    width: 300px;
+    transform: translateY(170px);
+}
+
 
 .peticion {
   background: #fff;
@@ -78,15 +87,14 @@ label {
 
 
 .button-collab {
-    text-align: center;
-    transform: translateY(85px);
-    background: rgba(34,34,34,0.1);
+text-align: center;
+    transform: translateY(150px);
     border-radius: 8px;
     padding: 3%;
-}
- p {
+     p {
   text-align: center;
 }
+} 
 
 .index-h2 {
   text-align: center;
@@ -99,7 +107,7 @@ a:hover {
 }
 
 .row {
-  margin-top: 70px;
+      margin-top: 95px;
 }
 
 #signup-form .custom-select {
@@ -111,29 +119,43 @@ a:hover {
 /* --- GLIDE PROFILE --- */
 
 .myButton {
-      width: 90%;
-	    background: linear-gradient(to bottom, #13a699  5%, #13a699 100%);
-    background-color: #13a699;
-    border-radius: 8px;
+    width: 80%;
+    background-color: #7575c9;
+    border-radius: 25px;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
     font-size: 18px;
     font-weight: 700;
-    padding: 9px 68px;
+    padding: 9px 58px;
     text-decoration: none;
-    margin: 4%;
+    margin: 2%;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #13a699 5%, #13a699 100%);
-	background-color:#13a699;
+  background:linear-gradient(to bottom, #7575c9 5%, #7575c9 100%);
+	background-color:#7575c9;
 }
 .myButton:active {
 	position:relative;
 	top:1px;
 }
 
+
+.myButton-dos {
+      width: 70%;
+    background-color: #7575c9;
+    border-radius: 25px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 9px 58px;
+    text-decoration: none;
+    margin: 2%;
+}
        
 
 .glide {
