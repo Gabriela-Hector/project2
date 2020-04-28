@@ -12,7 +12,7 @@ router.get('/detalles', (req, res) => res.render('profile/collab-details'))
 router.get('/findCollaborations', (req, res) => {
     console.log('Los conocimientos son', req.query.knowledgeList)
 
-    Collaboration.find()
+    Collaboration.find({ collaborationType: "caring" })
         .then((collaborations) => res.json(collaborations))
         .catch(err => console.log(err))
 })
