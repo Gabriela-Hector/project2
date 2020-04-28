@@ -9,9 +9,6 @@ h1, h2, h3 {
   color: #fff;
 }
 
-p {
-  color: #fff;
-}
 
 #errorMsg {
   background-color: red;
@@ -68,6 +65,11 @@ label {
     margin: auto;
     transform: translate(0, 50px);
 } 
+
+.peticion {
+  background: #fff;
+  padding: 2%;
+}
 
 .span {
   font-weight: 500;

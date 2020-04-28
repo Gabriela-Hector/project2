@@ -5,6 +5,7 @@ const passport = require("passport")
 const User = require("../models/user.model")
 const Collaboration = require("../models/collaboration.model")
 
+router.get('/detalles', (req, res) => res.render('profile/collab-details'))
 
 router.get('/all-petitions', (req, res) => {
     Collaboration.find()
@@ -12,16 +13,11 @@ router.get('/all-petitions', (req, res) => {
         .catch(err => console.log(err))
 })
 
+
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('index', { loginErrorMessage: 'Acceso restringido' })
 router.get('/:username', checkLoggedIn, (req, res) => {
-    console.log(req.user)
-    res.render('auth/profile', req.user)
-})
-
-
-router.get('/', (req, res, next) => {
     Collaboration.find()
-        .then(allPetitions => console.log(allPetitions))
+        .then(allCollaborations => res.render('auth/profile', { user: req.user, collaborations: allCollaborations }))
         .catch(err => console.log('Error', err))
 })
 
