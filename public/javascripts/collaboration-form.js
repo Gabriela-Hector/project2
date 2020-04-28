@@ -43,3 +43,57 @@ getLocation = () => {
         })
     })
 }
+
+
+
+const inputAudio = document.querySelector('.audioDescription input')
+let audioChunks = []
+let rec
+let recordedAudio = document.querySelector('#recordedAudio')
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => { handlerFunction(stream) })
+
+function handlerFunction(stream) {
+    rec = new MediaRecorder(stream)
+    rec.ondataavailable = e => {
+        audioChunks.push(e.data)
+        if (rec.state == "inactive") {
+            let blob = new Blob(audioChunks, { type: 'audio/mpeg-3' })
+
+
+            const file = new File([blob], recordedAudio.src, { type: 'audio/mpeg-3', lastModified: Date.now() })
+
+            recordedAudio.src = URL.createObjectURL(file)
+            recordedAudio.controls = true
+            recordedAudio.autoplay = true
+
+            inputAudio.value = file.name
+        }
+    }
+}
+
+// function sendData(data) {
+//     const file = new File([data], 'audio.mp3', { type: 'audio/mpeg-3', lastModified: Date.now() })
+//     console.log('Blob esta aqui', file);
+
+
+// }
+
+record.onclick = e => {
+    console.log('I was clicked')
+    record.disabled = true
+    record.style.backgroundColor = "blue"
+    stopRecord.disabled = false
+    audioChunks = []
+    rec.start()
+}
+stopRecord.onclick = e => {
+    console.log("I was clicked")
+    record.disabled = false
+    stop.disabled = true
+    record.style.backgroundColor = "red"
+    rec.stop()
+}
+
+//Copyright (c) 2020 by Jeremy Gottfried (https://codepen.io/jeremyagottfried/pen/bMqyNZ)
