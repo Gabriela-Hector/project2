@@ -7,6 +7,8 @@ const User = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('index', { loginErrorMessage: 'Acceso restringido' })
+
 
 // User signup
 router.get("/signup", (req, res) => res.render("auth/signup"))
@@ -14,15 +16,15 @@ router.post("/signup", (req, res, next) => {
 
     const { username, email, password, status, knowledge } = req.body
 
-    if (!username || !password) {
-        res.render("auth/signup", { errorMsg: "Rellena el usuario y la contraseña" })
+    if (!username || !password || !email) {
+        res.render("auth/signup", { errorMsg: "Rellena todos los campos" })
         return
     }
 
     User.findOne({ username })
         .then(user => {
             if (user) {
-                res.render("auth/signup", { errorMsg: "El usuario ya existe en la BBDD" })
+                res.render("auth/signup", { errorMsg: "El usuario ya está registrado" })
                 return
             }
             const salt = bcrypt.genSaltSync(bcryptSalt)
@@ -45,9 +47,8 @@ router.post('/login', passport.authenticate("local", {
     passReqToCallback: true,
     badRequestMessage: 'Rellena todos los campos'
 }))
-const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('index', { loginErrorMessage: 'Acceso restringido' })
-router.get('/profile', checkLoggedIn, (req, res) => res.redirect(`/${req.user.username}`))
 
+router.get('/profile', checkLoggedIn, (req, res) => res.redirect(`/${req.user.username}`))
 
 // User logout
 router.get("/logout", (req, res) => {
