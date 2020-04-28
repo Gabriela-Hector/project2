@@ -8,7 +8,10 @@ const Collaboration = require("../models/collaboration.model")
 
 router.get('/detalles', (req, res) => res.render('profile/collab-details'))
 
-router.get('/all-petitions', (req, res) => {
+
+router.get('/findCollaborations', (req, res) => {
+    console.log('Los conocimientos son', req.query.knowledgeList)
+
     Collaboration.find()
         .then((collaborations) => res.json(collaborations))
         .catch(err => console.log(err))

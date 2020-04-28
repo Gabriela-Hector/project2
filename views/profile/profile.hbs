@@ -8,8 +8,15 @@
 
             }
         </style>
+        {{#each user.knowledge}}
+        <span class="knowledge-field">{{this}}</span>
+        {{/each}}
+        <section>
 
-        <div id="map"></div>
+        </section>
+        <section>
+            <figure id="map"></figure>
+        </section>
 
 
         <div class="container">
@@ -39,7 +46,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
         <script>
             const config = {
-                type: 'carousel',
+                type: "carousel",
                 perView: 3,
                 breakpoints: {
                     600: {
@@ -47,11 +54,13 @@
                     }
                 }
             }
-            new Glide('.glide', config).mount()
+
+            new Glide(".glide", config).mount();
         </script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="javascripts/directions.js"> </script>
+        <script src="javascripts/profile/directions.js"> </script>
         <script src="javascripts/profile/map.js"> </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&callback=initMap"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&libraries=places&callback=initMap"></script>
     </div>
 </div>
