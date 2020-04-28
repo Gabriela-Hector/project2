@@ -61,14 +61,17 @@ function handlerFunction(stream) {
         if (rec.state == "inactive") {
             let blob = new Blob(audioChunks, { type: 'audio/mpeg-3' })
 
+            let path = URL.createObjectURL(blob)
+            //path = path.substr(5, path.length - 6)
+            console.log(path)
+            const file = new File([blob], path, { type: 'audio/mpeg-3', lastModified: Date.now() })
 
-            const file = new File([blob], recordedAudio.src, { type: 'audio/mpeg-3', lastModified: Date.now() })
-
-            recordedAudio.src = URL.createObjectURL(file)
+            recordedAudio.src = path
             recordedAudio.controls = true
             recordedAudio.autoplay = true
-
-            inputAudio.value = file.name
+            inputAudio.value = path
+            // axios.get(`http://localhost:5000/collaboration-request/audiofile?path=${URL.createObjectURL(blob)}`)
+            //     .then()
         }
     }
 }
