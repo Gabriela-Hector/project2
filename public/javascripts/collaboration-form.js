@@ -45,8 +45,8 @@ getLocation = () => {
 }
 
 
-
 const inputAudio = document.querySelector('.audioDescription input')
+
 let audioChunks = []
 let rec
 let recordedAudio = document.querySelector('#recordedAudio')
@@ -62,16 +62,23 @@ function handlerFunction(stream) {
             let blob = new Blob(audioChunks, { type: 'audio/mpeg-3' })
 
             let path = URL.createObjectURL(blob)
-            //path = path.substr(5, path.length - 6)
-            console.log(path)
-            const file = new File([blob], path, { type: 'audio/mpeg-3', lastModified: Date.now() })
 
-            recordedAudio.src = path
-            recordedAudio.controls = true
-            recordedAudio.autoplay = true
-            inputAudio.value = path
-            // axios.get(`http://localhost:5000/collaboration-request/audiofile?path=${URL.createObjectURL(blob)}`)
-            //     .then()
+            fetch(URL.createObjectURL(blob)).then(r => {
+                r.blob()
+                    .then(response => console.log(response))
+            })
+
+            //path = path.substr(5, path.length - 6)
+
+            // const file = new File([blob], path, { type: 'audio/mpeg-3', lastModified: Date.now() })
+
+            // recordedAudio.src = path
+            // recordedAudio.controls = true
+            // recordedAudio.autoplay = true
+
+            // inputAudio.value = path
+            //axios.get(`http://localhost:5000/collaboration-request/audiofile?blob=${recordedAudio.src}`)
+            //  .then()
         }
     }
 }
@@ -99,4 +106,4 @@ stopRecord.onclick = e => {
     rec.stop()
 }
 
-//Copyright (c) 2020 by Jeremy Gottfried (https://codepen.io/jeremyagottfried/pen/bMqyNZ)
+// //Copyright (c) 2020 by Jeremy Gottfried (https://codepen.io/jeremyagottfried/pen/bMqyNZ)
