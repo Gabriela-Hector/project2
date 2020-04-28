@@ -1,27 +1,27 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div>
-            <h3>¿Tienes cuenta?</h3>
-            <a class="myButton" href="/login">Iniciar sesión</a>
+            <h4>¿Tienes cuenta?</h4>
+            <a class="myButton-dos" href="/login">Iniciar sesión</a>
         </div>
-        <h3>Registro</h3>
+        <br>
+        <h4>Registro</h4>
 
         <form id="signup-form" action="/signup" method="POST">
             <div class="form-group">
-                <label for="field1">Nombre de usuario</label>
-                <input name="username" type="text" class="form-control" id="field1">
-            </div>
-            <div class=" form-group">
-                <label for="field3">Email</label>
-                <input name="email" type="text" class="form-control" id="field3">
+                <input name="username" type="text" class="form-control" id="field1" required="true"
+                    placeholder="Nombre de usuario">
             </div>
             <div class="form-group">
-                <label for="field2">Contraseña</label>
-                <input name="password" type="password" class="form-control" id="field2">
+                <input name="email" type="text" class="form-control" id="field3" required="true" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input name="password" type="password" class="form-control" id="field2" required="true"
+                    placeholder="Contraseña">
             </div>
             <div class="form-group">
                 <label for="field5">¿En qué puedes echar una mano?</label>
-                <select name="knowledge" class="custom-select" multiple>
+                <select name="knowledge" class="custom-select" required="true" multiple>
                     <option class="knowledge-button" value="shopping">Compra y recados</option>
                     <option class="knowledge-button" value="displacement">Desplazamiento</option>
                     <option class="knowledge-button" value="company">Compañía</option>
@@ -32,7 +32,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="myButton">Registrarme</button>
+            <button type="submit" class="myButton-dos">Registrarme</button>
 
             {{#if errorMsg}}
             <div id="errorMsg">{{{errorMsg}}}</div>
