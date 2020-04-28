@@ -6,9 +6,9 @@ const uploadLocal = multer({ dest: './public/uploads/' })
 
 router.get('/', (req, res) => res.render('collaboration-request/request'))
 
-router.post('/', uploadLocal.single('audioDescription'), (req, res, next) => {
+router.post('/', (req, res, next) => {
 
-    console.log('El archivo de audio es', req.body)
+    console.log('El archivo de audio es', req.body.audioDescription)
 
     console.log(req.body)
     res.redirect('/')
