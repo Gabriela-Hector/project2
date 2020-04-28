@@ -5,6 +5,7 @@ initMap = () => {
     zoom: 16,
   }
 
+
   const myMap = new google.maps.Map(document.getElementById('map'), mapOptions)
 
   let markerOptions = {
@@ -15,14 +16,18 @@ initMap = () => {
 
   new google.maps.Marker(markerOptions)
 
+  const markers = []
+
   let center = {
     lat: undefined,
     lng: undefined
   };
 
   function getPlaces() {
-    axios.get("http://localhost:3000/profile")
+    console.log('Entra en getPlaces')
+    axios.get("http://localhost:3000/all-petitions")
       .then(response => {
+        console.log(response.data)
         placeCollaboration(response.data);
       })
       .catch(error => {
@@ -31,18 +36,18 @@ initMap = () => {
   }
 
   function placeCollaboration(collaborations) {
+    console.log('hola Fran', collaborations)
     collaborations.forEach((collaboration) => {
-
+      console.log(collaboration)
       const center = {
-        lat: location.coordinates[0],
-        lng: location.coordinates[1]
+        lat: collaboration.location.coordinates[0],
+        lng: collaboration.location.coordinates[1]
       };
-      const pin = new google.maps.Marker({
+      new google.maps.Marker({
         position: center,
-        map: map,
+        map: myMap,
         title: collaboration.name
       });
-      markers.push(pin);
     });
   }
 
