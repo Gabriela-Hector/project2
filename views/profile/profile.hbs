@@ -8,12 +8,13 @@
 
             }
         </style>
-        {{#each user.knowledge}}
-        <span class="knowledge-field">{{this}}</span>
-        {{/each}}
-        <section>
 
+        <section>
+            {{#each user.knowledge}}
+            <span class="knowledge-field">{{this}}</span>
+            {{/each}}
         </section>
+
         <section>
             <figure id="map"></figure>
         </section>

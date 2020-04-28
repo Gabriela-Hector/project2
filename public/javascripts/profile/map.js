@@ -36,12 +36,8 @@ initMap = () => {
         document.querySelectorAll('.knowledge-field').forEach(elm => knowledgeList.push(elm.innerHTML))
 
         axios.get(`http://localhost:3000/findCollaborations?knowledgeList=${knowledgeList}`)
-            .then(response => {
-                placeCollaboration(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            .then(response => placeCollaboration(response.data))
+            .catch(error => console.log(error))
     }
 
     function placeCollaboration(collaborations) {
