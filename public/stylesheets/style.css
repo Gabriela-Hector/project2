@@ -69,6 +69,10 @@ p {
 .index-h2 {
   text-align: center; }
 
+a:hover {
+  text-decoration: none;
+  color: #fff; }
+
 .row {
   margin-top: 70px; }
 
