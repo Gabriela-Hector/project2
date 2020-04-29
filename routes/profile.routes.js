@@ -12,7 +12,7 @@ router.get('/:id/place', (req, res, next) => {
 })
 
 
-router.get('/detalles/:id', checkLoggedIn, (req, res, next) => {
+router.get('/detalles/:id', (req, res, next) => {
     Collaboration.findById(req.params.id)
         .then(collabDet => res.render('profile/collab-details', collabDet))
         .catch(err => next(new Error(err)))

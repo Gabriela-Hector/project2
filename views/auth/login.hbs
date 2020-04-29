@@ -10,15 +10,20 @@
             <div class="form-group">
                 <input name="password" type="password" class="form-control" id="field2" placeholder="Contraseña">
             </div>
-
             <button type="submit" class="myButton-dos">Iniciar sesión</button>
-
             {{#if errorMsg}}
             <div id="errorMsg">{{{errorMsg}}}</div>
             {{/if}}
-
         </form>
-        {{!-- 
-        <p>¿No tienes cuenta? <a href="/signup">¡Regístrate!</a></p> --}}
+
+        <div id="goback-button">
+            <button onclick="history.back(-1)" class="myButton-dos">Volver</button>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+
     </div>
 </div>

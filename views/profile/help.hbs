@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-md-6 intento">
-        <h3>Gracias por tu ayuda, {{user.username}}</h3>
+        <h4>Gracias por tu ayuda, {{user.username}}</h4>
         <style>
             #map {
                 width: 100%;
@@ -15,10 +15,9 @@
             {{/each}}
         </section>
 
-        <section>
+        <section id="help-map">
             <figure id="map"></figure>
         </section>
-
 
         <div class="container">
             <div class="glide">
@@ -27,23 +26,32 @@
                         {{#each collaborations}}
                         <li class="glide__slide">
                             <div class="peticion">
-                                <p>Petición: {{collaborationType}}</p>
-                                <p>Teléfono: {{telephoneNumber}}</p>
-                                <p>Status: {{status}}</p>
-                                <p> <a href="/detalles/{{_id}}">Ver más detalles</a></p>
+                                <p class="help-petition">Petición: <br><span
+                                        class="help-collab">{{collaborationType}}</span></p>
+                                <a class="link-collab" href="/detalles/{{_id}}">Más detalles</a>
                             </div>
                         </li>
                         {{/each}}
                     </ul>
                 </div>
                 <div class="glide__arrows" data-glide-el="controls">
-                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><img class="arrow-size"
+                            src="/images/arrows/025-left-arrow-2.png" alt=""></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><img class="arrow-size"
+                            src="/images/arrows/017-right-arrow-2.png" alt=""></button>
                 </div>
             </div>
         </div>
 
+        <div id="goback-button">
+            <button onclick="history.back(-1)" class="myButton-dos">Volver</button>
 
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
 
     </div>
 </div>

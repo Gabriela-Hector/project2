@@ -28,10 +28,18 @@
             </div>
 
             <button type="submit" class="myButton-dos">Registrarme</button>
-
             {{#if errorMsg}}
             <div id="errorMsg">{{{errorMsg}}}</div>
             {{/if}}
         </form>
+        <div id="goback-button">
+            <button onclick="history.back(-1)" class="myButton-dos">Volver</button>
+
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
     </div>
 </div>

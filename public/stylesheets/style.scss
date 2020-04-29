@@ -12,7 +12,7 @@ h1, h2, h3, h4 {
 
 
 #errorMsg {
-  background-color: red;
+  background-color: #000;
   color: white;
   font-weight: 400;
   text-align: center;
@@ -82,8 +82,16 @@ h1, h2, h3, h4 {
 
 
 .peticion {
-  background: #fff;
-  padding: 2%;
+    background-color: #7f7ed6;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+.peticion-dos {
+  background: #7f7ed6;
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff;
 }
 
 .span {
@@ -149,7 +157,7 @@ a:hover {
 
 
 .myButton-dos {
-      width: 70%;
+      width: 62%;
     background-color: #7575c9;
     border-radius: 25px;
     display: inline-block;
@@ -157,7 +165,7 @@ a:hover {
     color: #ffffff;
     font-family: Arial;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     padding: 9px 58px;
     text-decoration: none;
     margin: 2%;
@@ -168,6 +176,32 @@ a:hover {
   margin-top: 5%;
 }
 
+/* --- Glide box ---*/
+
+.help-petition {
+ font-weight: 300;
+    font-size: 15px;
+    color: #fff;
+}
+
+.help-collab {
+font-weight: 800;
+    font-size: 20px;
+    color: #fff;
+}
+
+.link-collab {
+  color: #fff;
+}
+
+.arrow-size{
+  width: 20px;
+  height: 20px;
+}
+
+.knowledge-field {
+  display: none;
+}
 
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
