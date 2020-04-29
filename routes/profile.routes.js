@@ -8,7 +8,6 @@ const Collaboration = require("../models/collaboration.model")
 
 router.get('/detalles', (req, res) => res.render('profile/collab-details'))
 
-
 router.get('/findCollaborations', (req, res, next) => {
     const knowledgeList = req.query.knowledgeList.split(',')
     const query = []
@@ -18,11 +17,12 @@ router.get('/findCollaborations', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-
 router.get('/:username', checkLoggedIn, (req, res, next) => {
     Collaboration.find()
-        .then(allCollaborations => res.render('profile/profile', { user: req.user, collaborations: allCollaborations }))
+        .then(allCollaborations => res.render('profile/menu', { user: req.user, collaborations: allCollaborations }))
         .catch(err => next(new Error(err)))
 })
+
+// router.get('/:username/help', (req, res, next))
 
 module.exports = router
