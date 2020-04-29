@@ -12,8 +12,8 @@ const collaborationSchema = new Schema({
         type: String,
         required: true,
     },
-    creatorId: Schema.Types.ObjectId,
-    helperId: Schema.Types.ObjectId,
+    creatorId: { type: Schema.Types.ObjectId, ref: 'User' },
+    helperId: { type: Schema.Types.ObjectId, ref: 'User' },
     location: {
         type: {
             type: String,

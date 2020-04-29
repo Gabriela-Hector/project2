@@ -22,8 +22,8 @@ const users = [
         recuperationToken: ''
     },
     {
-        username: 'Hector',
-        email: 'hectoranf@gmail.com',
+        username: 'juan',
+        email: 'juan@gmail.com',
         password: bcrypt.hashSync('1234', salt),
         status: 'active',
         knowledge: ['shopping', 'displacement', 'caring', 'technology', 'Housework', 'DIY'],
