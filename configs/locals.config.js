@@ -1,4 +1,4 @@
 module.exports = app => {
-    app.locals.title = 'Backend generator (auth included!)'
+    app.locals.title = 'Yava | Colaboración entre vecinos'
     app.locals.mapsApiKey = process.env.GOOGLEMAPSAPIKEY
 }

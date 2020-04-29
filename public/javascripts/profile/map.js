@@ -1,56 +1,59 @@
+const knowledgeList = []
+let myMap
+
+const getPlaces = () => {
+
+    document.querySelectorAll('.knowledge-field').forEach(elm => knowledgeList.push(elm.innerHTML))
+
+    axios.get(`http://localhost:3000/findCollaborations?knowledgeList=${knowledgeList}`)
+        .then(response => placeCollaboration(response.data))
+        .catch(error => console.log(error))
+}
+
+const placeCollaboration = collaborations => {
+    collaborations.forEach((elm) => {
+        const center = {
+            lat: elm.location.coordinates[0],
+            lng: elm.location.coordinates[1]
+        }
+        new google.maps.Marker({
+            position: center,
+            map: myMap,
+            title: elm.name
+        })
+    })
+}
+
 initMap = () => {
 
     let mapOptions = {
         center: directions.centroMadrid.coords,
-        zoom: 16,
+        zoom: 16
     }
+    myMap = new google.maps.Map(document.getElementById('map'), mapOptions)
 
+    let helperPosition
 
-    const myMap = new google.maps.Map(document.getElementById('map'), mapOptions)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                helperPosition = { lat: position.coords.latitude, lng: position.coords.longitude }
+                myMap.setCenter(helperPosition)
 
-    let markerOptions = {
-        position: directions.centroMadrid.coords,
-        map: myMap,
-        title: directions.centroMadrid.title
-    }
-
-    new google.maps.Marker(markerOptions)
-
-    const markers = []
-
-    let center = {
-        lat: undefined,
-        lng: undefined
-    };
-
-    function getPlaces() {
-        console.log('Entra en getPlaces')
-        axios.get("http://localhost:3000/all-petitions")
-            .then(response => {
-                console.log(response.data)
-                placeCollaboration(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-
-    function placeCollaboration(collaborations) {
-        console.log('hola Fran', collaborations)
-        collaborations.forEach((collaboration) => {
-            console.log(collaboration)
-            const center = {
-                lat: collaboration.location.coordinates[0],
-                lng: collaboration.location.coordinates[1]
-            };
-            new google.maps.Marker({
-                position: center,
-                map: myMap,
-                title: collaboration.name
-            });
-        });
+                let markerOptions = {
+                    position: helperPosition,
+                    map: myMap,
+                    title: "Tú estás aqui",
+                }
+                new google.maps.Marker(markerOptions)
+            },
+            error => console.error("Couldn't find a location:", error),
+            { enableHighAccuracy: true }
+        )
+    } else {
+        console.error("Couldn't use geolocation")
     }
 
     getPlaces()
-
 }
+
