@@ -31,7 +31,7 @@ initMap = () => {
 
     let mapOptions = {
         center: directions.centroMadrid.coords,
-        zoom: 16
+        zoom: 12
     }
     myMap = new google.maps.Map(document.getElementById('map'), mapOptions)
 

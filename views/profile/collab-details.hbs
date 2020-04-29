@@ -1,13 +1,21 @@
 <div class="row justify-content-center">
     <div class="detalles-collab">
         <h3>Detalles de colaboración</h3>
-
         <div class="peticion">
-            <p>{{collaborationType}}</p>
-            <p>{{telephoneNumber}}</p>
-            <p>{{status}}</p>
+            <p>Colaboración: {{collaborationType}}</p>
+            <p>Teléfono: {{telephoneNumber}}</p>
+            <p>Status: {{status}}</p>
         </div>
-        <input id="#lat" type="hidden" value={{location.coordinates[0]}} />
-        <input id="#lng" type="hidden" value={{location.coordinates[1]}} />
+        <section>
+            <style>
+                #collabMap {
+                    width: 100%;
+                    height: 200px;
+                }
+            </style>
+            <figure collaborationId="{{_id}}" id="collabMap"></figure>
+        </section>
     </div>
 </div>
+
+<script src="/javascripts/collaboration/collaboration.map.js"></script>
