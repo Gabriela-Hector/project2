@@ -42,11 +42,11 @@ h1, h2, h3, h4 {
 /* --- INDEX --- */
 .quote-down {
   width: 15px;
-  transform: translate(-105px, 28px); }
+  transform: translate(-130px, 28px); }
 
 .quote-up {
   width: 15px;
-  transform: translate(80px, -50px); }
+  transform: translate(95px, -50px); }
 
 .text-collaborate {
   transform: translateY(200px); }
