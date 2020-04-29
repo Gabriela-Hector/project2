@@ -4,8 +4,11 @@ const passport = require("passport")
 
 const Collaboration = require("../models/collaboration.model")
 
-
-router.get('/detalles', (req, res) => res.render('profile/collab-details'))
+router.get('/detalles/:id', checkLoggedIn, (req, res, next) => {
+    Collaboration.findById(req.params.id)
+        .then(collabDet => res.render('profile/collab-details', collabDet))
+        .catch(err => next(new Error(err)))
+})
 
 //llamada de Axios
 router.get('/findCollaborations', (req, res, next) => {
