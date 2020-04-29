@@ -7,9 +7,6 @@ const User = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 
-const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('index', { loginErrorMessage: 'Acceso restringido' })
-
-
 // User signup
 router.get("/signup", (req, res) => res.render("auth/signup"))
 router.post("/signup", (req, res, next) => {
@@ -31,7 +28,7 @@ router.post("/signup", (req, res, next) => {
             const hashPass = bcrypt.hashSync(password, salt)
 
             User.create({ username, email, password: hashPass, status, knowledge })
-                .then(() => res.redirect("/profile"))
+                .then(() => res.redirect("/login"))
                 .catch((err) => res.render("auth/signup", { errorMsg: "No se pudo crear el usuario" }))
         })
         .catch(error => next(error))
@@ -41,19 +38,19 @@ router.post("/signup", (req, res, next) => {
 // User login
 router.get('/login', (req, res) => res.render('auth/login', { "errorMsg": req.flash("error") }))
 router.post('/login', passport.authenticate("local", {
-    successRedirect: "/profile",
+    successRedirect: "/checkLogin",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true,
     badRequestMessage: 'Rellena todos los campos'
 }))
 
-router.get('/profile', checkLoggedIn, (req, res) => res.redirect(`/${req.user.username}`))
+router.get('/checkLogin', (req, res) => req.isAuthenticated() ? res.redirect(`/${req.user.username}`) : res.redirect('/login'))
 
 // User logout
 router.get("/logout", (req, res) => {
     req.logout()
-    res.redirect("/login")
+    res.redirect("/")
 })
 
 module.exports = router
