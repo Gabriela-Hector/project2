@@ -1,12 +1,36 @@
+const knowledgeList = []
+let myMap
+
+const getPlaces = () => {
+
+    document.querySelectorAll('.knowledge-field').forEach(elm => knowledgeList.push(elm.innerHTML))
+
+    axios.get(`http://localhost:3000/findCollaborations?knowledgeList=${knowledgeList}`)
+        .then(response => placeCollaboration(response.data))
+        .catch(error => console.log(error))
+}
+
+const placeCollaboration = collaborations => {
+    collaborations.forEach((elm) => {
+        const center = {
+            lat: elm.location.coordinates[0],
+            lng: elm.location.coordinates[1]
+        }
+        new google.maps.Marker({
+            position: center,
+            map: myMap,
+            title: elm.name
+        })
+    })
+}
+
 initMap = () => {
 
     let mapOptions = {
         center: directions.centroMadrid.coords,
         zoom: 16
     }
-    const myMap = new google.maps.Map(document.getElementById('map'), mapOptions)
-
-
+    myMap = new google.maps.Map(document.getElementById('map'), mapOptions)
 
     let helperPosition
 
@@ -30,30 +54,6 @@ initMap = () => {
         console.error("Couldn't use geolocation")
     }
 
-
-    function getPlaces() {
-        let knowledgeList = []
-        document.querySelectorAll('.knowledge-field').forEach(elm => knowledgeList.push(elm.innerHTML))
-
-        axios.get(`http://localhost:3000/findCollaborations?knowledgeList=${knowledgeList}`)
-            .then(response => placeCollaboration(response.data))
-            .catch(error => console.log(error))
-    }
-
-    function placeCollaboration(collaborations) {
-        collaborations.forEach((collaboration) => {
-            const center = {
-                lat: collaboration.location.coordinates[0],
-                lng: collaboration.location.coordinates[1]
-            };
-            new google.maps.Marker({
-                position: center,
-                map: myMap,
-                title: collaboration.name
-            });
-        });
-    }
-
     getPlaces()
-
 }
+

@@ -14,7 +14,7 @@ router.get('/findCollaborations', (req, res, next) => {
     const query = []
     knowledgeList.forEach(elm => query.push({ collaborationType: elm }))
     Collaboration.find({ $or: query })
-        .then((collaborations) => res.json(collaborations))
+        .then(collaborations => res.json(collaborations))
         .catch(err => next(new Error(err)))
 })
 
