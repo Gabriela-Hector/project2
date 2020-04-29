@@ -29,6 +29,8 @@ const userSchema = new Schema({
     profilePic: {
         type: String
     },
+    collaborations: [{ type: Schema.Types.ObjectId, ref: 'Collaboration' }],
+    acceptedCollaborations: [{ type: Schema.Types.ObjectId, ref: 'Collaboration' }],
     verificationToken: String,
     recuperationToken: String
 }, {
