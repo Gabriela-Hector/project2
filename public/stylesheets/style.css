@@ -47,6 +47,13 @@ h1, h2, h3, h4 {
 .span-2 {
   font-size: 20px; }
 
+.fondo {
+  background-image: url("../images/YA-VA-2.png");
+  background-position: bottom;
+  height: 706px;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+
 #logo-yava {
   display: block;
   width: 250px;
@@ -55,7 +62,7 @@ h1, h2, h3, h4 {
 
 .helps img {
   width: 300px;
-  transform: translateY(170px); }
+  transform: translateY(110px); }
 
 .peticion {
   background: #fff;
@@ -67,7 +74,7 @@ h1, h2, h3, h4 {
 
 .button-collab {
   text-align: center;
-  transform: translateY(150px);
+  transform: translateY(125px);
   border-radius: 8px;
   padding: 3%; }
   .button-collab p {
