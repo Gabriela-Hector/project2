@@ -40,6 +40,23 @@ h1, h2, h3, h4 {
   border: none; }
 
 /* --- INDEX --- */
+.quote-down {
+  width: 15px;
+  transform: translate(-105px, 28px); }
+
+.quote-up {
+  width: 15px;
+  transform: translate(80px, -50px); }
+
+.text-collaborate {
+  transform: translateY(200px); }
+
+.colaborar-span span {
+  font-size: 40px; }
+
+p {
+  font-size: 25px; }
+
 .text-index {
   transform: translateY(120px);
   font-size: 19px; }
@@ -48,8 +65,8 @@ h1, h2, h3, h4 {
   font-size: 20px; }
 
 .fondo {
-  background-image: url("../images/YA-VA-2.png");
-  background-position: bottom;
+  background-image: url("../images/YA-VA-4.png");
+  background-position: top;
   height: 706px;
   background-size: 100%;
   background-repeat: no-repeat; }
@@ -62,7 +79,7 @@ h1, h2, h3, h4 {
 
 .helps img {
   width: 300px;
-  transform: translateY(110px); }
+  transform: translateY(160px); }
 
 .peticion {
   background-color: #7f7ed6;
@@ -81,7 +98,7 @@ h1, h2, h3, h4 {
 
 .button-collab {
   text-align: center;
-  transform: translateY(125px);
+  transform: translateY(170px);
   border-radius: 8px;
   padding: 3%; }
   .button-collab p {
@@ -95,7 +112,7 @@ a:hover {
   color: #fff; }
 
 .row {
-  margin-top: 95px; }
+  margin-top: 145px; }
 
 #signup-form .custom-select {
   text-align: center;
@@ -127,14 +144,14 @@ a:hover {
 
 .myButton-dos {
   width: 62%;
-  background-color: #7575c9;
+  background-color: #8686d9;
   border-radius: 25px;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   padding: 9px 58px;
   text-decoration: none;
   margin: 2%; }
