@@ -5,44 +5,28 @@ const passport = require("passport")
 const Collaboration = require("../models/collaboration.model")
 const User = require("../models/user.model")
 
-
-router.get('/:id/place', (req, res, next) => {
-    Collaboration.findById(req.params.id)
-        .then(data => res.json(data))
-        .catch(err => next(new Error(err)))
-})
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/')
 
 
-router.get('/detalles/:id', checkLoggedIn, (req, res, next) => {
-    Collaboration.findById(req.params.id)
-        .then(collabDet => res.render('profile/collab-details', collabDet))
-        .catch(err => next(new Error(err)))
-})
-
-//llamada de Axios
+//Axios
 router.get('/findCollaborations', (req, res, next) => {
     const knowledgeList = req.query.knowledgeList.split(',')
-    const query = []
-    knowledgeList.forEach(elm => query.push({ collaborationType: elm }))
-
-    Collaboration.find({ $or: query })
+    Collaboration.find({ $and: [{ collaborationType: { $in: knowledgeList } }, { status: 'pending' }, { creatorId: { $ne: req.user._id } }] })
         .then(foundCollaborations => {
             res.json(foundCollaborations)
         })
         .catch(err => next(new Error(err)))
 })
 
-router.get('/:username/help', (req, res, next) => {
-
-    const query = []
-    req.user.knowledge.forEach(elm => query.push({ collaborationType: elm }))
-
-    Collaboration.find({ $or: query })
+//Encuentra collaboraciones que coincidan con tus conocimientos, esten pendientes y no seas el creador
+router.get('/:username/help', checkLoggedIn, (req, res, next) => {
+    Collaboration.find({ $and: [{ collaborationType: { $in: req.user.knowledge } }, { status: 'pending' }, { creatorId: { $ne: req.user._id } }] })
         .then(foundCollaborations => res.render('profile/help', { collaborations: foundCollaborations, user: req.user }))
         .catch(err => next(new Error(err)))
 })
 
-router.get('/:username/profile', (req, res, next) => {
+router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
+    console.log("el perfil es,", req.user)
     User.findById(req.user._id)
         .populate('collaborations')
         .populate('acceptedCollaborations')
@@ -51,7 +35,7 @@ router.get('/:username/profile', (req, res, next) => {
         })
         .catch(err => next(new Error(err)))
 })
-router.get('/:username', (req, res) => req.isAuthenticated() ? res.render('profile/menu', { user: req.user }) : res.redirect('/'))
+router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu', { user: req.user }))
 
 
 

@@ -61,34 +61,14 @@ function handlerFunction(stream) {
         if (rec.state == "inactive") {
             let blob = new Blob(audioChunks, { type: 'audio/mpeg-3' })
 
-            let path = URL.createObjectURL(blob)
-
-            fetch(URL.createObjectURL(blob)).then(r => {
-                r.blob()
-                    .then(response => console.log(response))
-            })
-
-            //path = path.substr(5, path.length - 6)
-
-            // const file = new File([blob], path, { type: 'audio/mpeg-3', lastModified: Date.now() })
-
-            // recordedAudio.src = path
-            // recordedAudio.controls = true
-            // recordedAudio.autoplay = true
-
-            // inputAudio.value = path
-            //axios.get(`http://localhost:5000/collaboration-request/audiofile?blob=${recordedAudio.src}`)
-            //  .then()
+            let formData = new FormData()
+            formData.append("audioRequest", blob)
+            axios.post('/collaboration-request/uploadAudio', formData)
+                .then(response => console.log(response.data))
+                .catch(err => console.log("error", err))
         }
     }
 }
-
-// function sendData(data) {
-//     const file = new File([data], 'audio.mp3', { type: 'audio/mpeg-3', lastModified: Date.now() })
-//     console.log('Blob esta aqui', file);
-
-
-// }
 
 record.onclick = e => {
     console.log('I was clicked')

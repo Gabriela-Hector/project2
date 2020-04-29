@@ -15,7 +15,12 @@
             </style>
             <figure collaborationId="{{_id}}" id="collabMap"></figure>
         </section>
+        <article>
+            <a href="/{{_id}}/accept" class="myButton">Accept</a>
+        </article>
     </div>
 </div>
 
 <script src="/javascripts/collaboration/collaboration.map.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&libraries=places&callback=initMap"></script>
