@@ -15,7 +15,10 @@ const collaborationSchema = new Schema({
     creatorId: Schema.Types.ObjectId,
     helperId: Schema.Types.ObjectId,
     location: {
-        type: { type: String },
+        type: {
+            type: String,
+            default: 'Point'
+        },
         coordinates: [Number]
     },
     status: {
