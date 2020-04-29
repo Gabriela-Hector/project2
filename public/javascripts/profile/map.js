@@ -35,7 +35,7 @@ initMap = () => {
         let knowledgeList = []
         document.querySelectorAll('.knowledge-field').forEach(elm => knowledgeList.push(elm.innerHTML))
 
-        axios.get(`http://localhost:3000/findCollaborations?knowledgeList=${knowledgeList}`)
+        axios.get(`https://yavaproject.herokuapp.com//findCollaborations?knowledgeList=${knowledgeList}`)
             .then(response => placeCollaboration(response.data))
             .catch(error => console.log(error))
     }
