@@ -17,12 +17,16 @@ router.get('/findCollaborations', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.get('/:username', checkLoggedIn, (req, res, next) => {
+router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu', { user: req.user }))
+
+router.get('/:username/help', checkLoggedIn, (req, res, next) => {
     Collaboration.find()
-        .then(allCollaborations => res.render('profile/menu', { user: req.user, collaborations: allCollaborations }))
+        .then(foundCollaborations => res.render('profile/help', { collaborations: foundCollaborations, user: req.user }))
         .catch(err => next(new Error(err)))
 })
 
-// router.get('/:username/help', (req, res, next))
+router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
+    res.render('profile/profile', { user: req.user })
+})
 
 module.exports = router

@@ -56,4 +56,3 @@ initMap = () => {
 
     getPlaces()
 }
-

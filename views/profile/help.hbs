@@ -44,24 +44,26 @@
         </div>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-        <script>
-            const config = {
-                type: "carousel",
-                perView: 3,
-                breakpoints: {
-                    600: {
-                        perView: 2
-                    }
-                }
-            }
 
-            new Glide(".glide", config).mount();
-        </script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="javascripts/profile/directions.js"> </script>
-        <script src="javascripts/profile/map.js"> </script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&libraries=places&callback=initMap"></script>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+<script>
+    const config = {
+        type: "carousel",
+        perView: 3,
+        breakpoints: {
+            600: {
+                perView: 2
+            }
+        }
+    }
+
+    new Glide(".glide", config).mount();
+</script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/javascripts/help/help.map.js"></script>
+<script src="/javascripts/help/directions.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&libraries=places&callback=initMap"></script>

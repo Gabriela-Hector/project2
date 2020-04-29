@@ -12,6 +12,7 @@ const collaborationSchema = new Schema({
         type: String,
         required: true,
     },
+    creatorId: Schema.Types.ObjectId,
     helperId: Schema.Types.ObjectId,
     location: {
         type: { type: String },
@@ -19,7 +20,7 @@ const collaborationSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'accept', 'completed'],
+        enum: ['pending', 'accept', 'completed', 'closed'],
         required: true,
         default: 'pending'
     }
