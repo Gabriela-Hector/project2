@@ -1,9 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const passport = require("passport")
-const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.render('index', { loginErrorMessage: 'Acceso restringido' })
 
-const User = require("../models/user.model")
 const Collaboration = require("../models/collaboration.model")
 
 
@@ -20,27 +18,33 @@ router.get('/detalles/:id', checkLoggedIn, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-
+//llamada de Axios
 router.get('/findCollaborations', (req, res, next) => {
     const knowledgeList = req.query.knowledgeList.split(',')
     const query = []
     knowledgeList.forEach(elm => query.push({ collaborationType: elm }))
+
     Collaboration.find({ $or: query })
-        .then(collaborations => res.json(collaborations))
+        .then(foundCollaborations => {
+            res.json(foundCollaborations)
+        })
         .catch(err => next(new Error(err)))
 })
 
-router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu', { user: req.user }))
+router.get('/:username/help', (req, res, next) => {
 
-router.get('/:username/help', checkLoggedIn, (req, res, next) => {
-    Collaboration.find()
+    const query = []
+    req.user.knowledge.forEach(elm => query.push({ collaborationType: elm }))
+
+    Collaboration.find({ $or: query })
         .then(foundCollaborations => res.render('profile/help', { collaborations: foundCollaborations, user: req.user }))
         .catch(err => next(new Error(err)))
 })
 
-router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
+router.get('/:username/profile', (req, res, next) => {
     res.render('profile/profile', { user: req.user })
 })
+router.get('/:username', (req, res) => req.isAuthenticated() ? res.render('profile/menu', { user: req.user }) : res.redirect('/'))
 
 
 
