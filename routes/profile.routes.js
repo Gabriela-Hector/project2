@@ -6,7 +6,11 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.r
 const User = require("../models/user.model")
 const Collaboration = require("../models/collaboration.model")
 
-router.get('/detalles', (req, res) => res.render('profile/collab-details'))
+router.get('/detalles/:id', checkLoggedIn, (req, res, next) => {
+    Collaboration.findById(req.params.id)
+        .then(collabDet => res.render('profile/collab-details', collabDet))
+        .catch(err => next(new Error(err)))
+})
 
 router.get('/findCollaborations', (req, res, next) => {
     const knowledgeList = req.query.knowledgeList.split(',')

@@ -1,12 +1,13 @@
 <div class="row justify-content-center">
     <div class="detalles-collab">
         <h3>Detalles de colaboración</h3>
+
         <div class="peticion">
-            <p>Tipo de petición: </p>
-            <p>Audio: </p>
-            <p>Número de teléfono:</p>
-            <p>Locación:</p>
-            <p>Status:</p>
+            <p>{{collaborationType}}</p>
+            <p>{{telephoneNumber}}</p>
+            <p>{{status}}</p>
         </div>
+        <input id="#lat" type="hidden" value={{location.coordinates[0]}} />
+        <input id="#lng" type="hidden" value={{location.coordinates[1]}} />
     </div>
 </div>

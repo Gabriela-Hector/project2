@@ -30,7 +30,7 @@
                                 <p>Petición: {{collaborationType}}</p>
                                 <p>Teléfono: {{telephoneNumber}}</p>
                                 <p>Status: {{status}}</p>
-                                <p> <a href="/detalles">Ver más detalles</a></p>
+                                <p> <a href="/detalles/{{_id}}">Ver más detalles</a></p>
                             </div>
                         </li>
                         {{/each}}
@@ -63,7 +63,5 @@
     new Glide(".glide", config).mount();
 </script>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/javascripts/help/help.map.js"></script>
 <script src="/javascripts/help/directions.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&libraries=places&callback=initMap"></script>
