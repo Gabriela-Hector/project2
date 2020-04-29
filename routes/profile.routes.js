@@ -3,6 +3,7 @@ const router = express.Router()
 const passport = require("passport")
 
 const Collaboration = require("../models/collaboration.model")
+const User = require("../models/user.model")
 
 
 router.get('/:id/place', (req, res, next) => {
@@ -42,7 +43,13 @@ router.get('/:username/help', (req, res, next) => {
 })
 
 router.get('/:username/profile', (req, res, next) => {
-    res.render('profile/profile', { user: req.user })
+    User.findById(req.user._id)
+        .populate('collaborations')
+        .populate('acceptedCollaborations')
+        .then(foundUser => {
+            res.render('profile/profile', { user: foundUser })
+        })
+        .catch(err => next(new Error(err)))
 })
 router.get('/:username', (req, res) => req.isAuthenticated() ? res.render('profile/menu', { user: req.user }) : res.redirect('/'))
 

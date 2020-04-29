@@ -1,6 +1,13 @@
-<div class="row justify-content-center">
-    <div class="col-md-6 intento">
-        <h4>Hola, {{user.username}}</h4>
-        <h4>Aqui saldrán las peticiones hechas y por hacer del usuario</h4>
+<div class="row">
+    <div class="col">
+        <h1>Hola {{user.username}}</h1>
+        <h2>Tus peticiones</h2>
+        <ul>
+            {{#each user.collaborations}}
+            <li>{{collaborationType}}</li>
+            <li>{{status}}</li>
+            <a href="/collaboration-request/{{_id}}/close">Cerrar petición</a>
+            {{/each}}
+        </ul>
     </div>
 </div>
