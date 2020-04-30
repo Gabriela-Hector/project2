@@ -20,9 +20,10 @@ router.get('/findCollaborations', (req, res, next) => {
 
 //Encuentra collaboraciones que coincidan con tus conocimientos, esten pendientes y no seas el creador
 router.get('/:username/help', checkLoggedIn, (req, res, next) => {
+    console.log('HOLA FRAN QUE HACESSSSSS')
     Collaboration.find({ $and: [{ collaborationType: { $in: req.user.knowledge } }, { status: 'pending' }, { creatorId: { $ne: req.user._id } }] })
         .then(foundCollaborations => res.render('profile/help', { collaborations: foundCollaborations, user: req.user }))
-        .catch(err => next(new Error(err)))
+        .catch(err => console.log(err))
 })
 
 router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
@@ -31,13 +32,26 @@ router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
         .populate('collaborations')
         .populate('acceptedCollaborations')
         .then(foundUser => {
+            console.log(foundUser)
             res.render('profile/profile', { user: foundUser })
         })
         .catch(err => next(new Error(err)))
 })
+
+
 router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu', { user: req.user }))
 
 router.get('/:username/completed', checkLoggedIn, (req, res, next) => {
+    User.findById(req.user._id)
+        .populate('collaborations')
+        .then(user => {
+            const closedCollaborations = user.collaborations.filter(elm => elm.status === 'closed')
+            res.render('collaboration.request/collab-record', { user, closedCollaborations })
+        })
+        .catch(err => next(new Error(err)))
+})
+
+router.get('/:username/record', checkLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
         .populate('acceptedCollaborations')
         .then(user => {
@@ -48,16 +62,5 @@ router.get('/:username/completed', checkLoggedIn, (req, res, next) => {
         })
         .catch(err => next(new Error(err)))
 })
-
-router.get('/:username/record', checkLoggedIn, (req, res, next) => {
-    User.findById(req.user._id)
-        .populate('collaborations')
-        .then(user => {
-            const closedCollaborations = user.collaborations.filter(elm => elm.status === 'closed')
-            res.render('collaboration.request/collab-record', { user, closedCollaborations })
-        })
-        .catch(err => next(new Error(err)))
-})
-
 
 module.exports = router
