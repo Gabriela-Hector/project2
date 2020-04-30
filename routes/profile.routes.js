@@ -37,6 +37,27 @@ router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
 })
 router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu', { user: req.user }))
 
+router.get('/:username/completed', checkLoggedIn, (req, res, next) => {
+    User.findById(req.user._id)
+        .populate('acceptedCollaborations')
+        .then(user => {
+            console.log('AQUI ESTA EL FUCKIN USER', user)
+            const completedCollabs = user.acceptedCollaborations.filter(elm => (elm.status === 'completed' || elm.status === 'closed'))
+            console.log('AQUI ESTAN LAS FUCKIN COMPLETED COLLABS', completedCollabs)
+            return res.render('collaboration.request/petitions', { user, completedCollabs })
+        })
+        .catch(err => next(new Error(err)))
+})
+
+router.get('/:username/record', checkLoggedIn, (req, res, next) => {
+    User.findById(req.user._id)
+        .populate('collaborations')
+        .then(user => {
+            const closedCollaborations = user.collaborations.filter(elm => elm.status === 'closed')
+            res.render('collaboration.request/collab-record', { user, closedCollaborations })
+        })
+        .catch(err => next(new Error(err)))
+})
 
 
 module.exports = router

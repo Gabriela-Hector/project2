@@ -1,34 +1,21 @@
 <div class="row justify-content-center">
-    <div class="col-md-6 intento">
-        <h4>Gracias por tu ayuda, {{user.username}}</h4>
-        <style>
-            #map {
-                width: 100%;
-                height: 250px;
+    <div class="col">
 
-            }
-        </style>
-
-        <section>
-            {{#each user.knowledge}}
-            <span class="knowledge-field">{{this}}</span>
-            {{/each}}
-        </section>
-
-        <section id="help-map">
-            <figure id="map"></figure>
-        </section>
+        <h4>Historial de colaboraciones realizadas</h4>
 
         <div class="container">
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        {{#each collaborations}}
+                        {{#each closedCollaborations}}
                         <li class="glide__slide">
                             <div class="peticion">
                                 <p class="help-petition">Petición: <br><span
-                                        class="help-collab">{{collaborationType}}</span></p>
-                                <a class="link-collab" href="/{{_id}}/details">Más detalles</a>
+                                        class="help-collab">{{collaborationType}}</span>
+                                </p>
+                                <p class="help-petition">Status: <br><span class="help-collab">{{status}}</span>
+                                </p>
+
                             </div>
                         </li>
                         {{/each}}
@@ -42,6 +29,7 @@
                 </div>
             </div>
         </div>
+
         <div id="goback-button">
             <button onclick="history.back(-1)" class="myButton-tres">Volver</button>
             <script>
@@ -51,25 +39,21 @@
             </script>
         </div>
 
+        {{!-- CONFIGURACIÓN DE GLIDE --}}
+
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+        <script>
+            const config = {
+                type: "carousel",
+                perView: 3,
+                breakpoints: {
+                    600: {
+                        perView: 2
+                    }
+                }
+            }
+            new Glide(".glide", config).mount();
+        </script>
+
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-<script>
-    const config = {
-        type: "carousel",
-        perView: 3,
-        breakpoints: {
-            600: {
-                perView: 2
-            }
-        }
-    }
-
-    new Glide(".glide", config).mount();
-</script>
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/javascripts/help/help.map.js"></script>
-<script src="/javascripts/help/directions.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}&libraries=places&callback=initMap"></script>

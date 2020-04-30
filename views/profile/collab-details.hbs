@@ -5,8 +5,7 @@
 
         <div class="peticion-dos">
             <p><strong>Colaboración:</strong> {{collaborationType}}</p>
-            <p><strong>Descripción:</strong> </p>
-            <p><strong>Teléfono:</strong> {{telephoneNumber}}</p>
+            <p><strong>Descripción:</strong> <audio src="{{audioDescription}}"></audio> </p>
             <p><strong>Status</strong>: {{status}}</p>
         </div>
         <br>
@@ -20,11 +19,11 @@
             <figure collaborationId="{{_id}}" id="collabMap"></figure>
         </section>
         <article>
-            <a href="/{{_id}}/accept" class="myButton">Accept</a>
+            <a href="/{{_id}}/accept" class="myButton">Aceptar</a>
         </article>
 
         <div id="goback-button">
-            <button onclick="history.back(-1)" class="myButton-dos">Volver</button>
+            <button onclick="history.back(-1)" class="myButton-tres">Volver</button>
 
             <script>
                 function goBack() {

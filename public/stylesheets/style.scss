@@ -68,8 +68,8 @@ width: 15px;
 
 .colaborar-span span {
   font-size: 40px;
-} .colaborar-span p {
-  font-size: 30px;
+} .colaborar-span {
+  font-size: 25px;
 }
 
 .text-index{
@@ -106,6 +106,10 @@ width: 15px;
     padding: 10px;
 }
 
+.peticion p {
+  color: #fff;
+}
+
 .peticion-dos {
   background: #7f7ed6;
     padding: 10px;
@@ -140,7 +144,7 @@ a:hover {
 }
 
 .row {
-      margin-top: 145px;
+      margin-top: 160px;
 }
 
 #signup-form .custom-select {
@@ -186,6 +190,21 @@ a:hover {
     font-size: 14px;
     font-weight: 400;
     padding: 9px 58px;
+    text-decoration: none;
+    margin: 2%;
+}
+
+.myButton-tres {
+      width: 50%;
+    background-color: #8686d9;
+    border-radius: 25px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 2px 58px;
     text-decoration: none;
     margin: 2%;
 }
