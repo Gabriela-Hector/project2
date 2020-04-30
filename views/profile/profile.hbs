@@ -1,40 +1,98 @@
 <div class="row justify-content-center">
     <div class="col">
-        <h1>Hola {{user.username}}</h1>
+        <h3>Hola, {{user.username}}</h3>
 
-        <h2>Colaboraciones aceptadas:</h2>
+        <h4>Colaboraciones aceptadas</h4>
         {{#if user.acceptedCollaborations}}
-        <ul>
-            {{#each user.acceptedCollaborations}}
-            <li>{{collaborationType}}</li>
-            <li>{{status}}</li>
-            <a href="/{{_id}}/complete">completar petición</a>
-            {{/each}}
-        </ul>
+
+        {{!-- GLIDE COLABORACIONES ACEPTADAS  --}}
+
+        <div class="container">
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        {{#each user.acceptedCollaborations}}
+                        <li class="glide__slide">
+                            <div class="peticion">
+                                <p>Colaboración: <span class="help-collab">{{collaborationType}}</span></p>
+                                <p>Status: <br><span class="help-collab">{{status}}</span></p>
+                                <a class="link-collab" href="/{{_id}}/complete">Completar petición</a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><img class="arrow-size"
+                            src="/images/arrows/025-left-arrow-2.png" alt=""></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><img class="arrow-size"
+                            src="/images/arrows/017-right-arrow-2.png" alt=""></button>
+                </div>
+            </div>
+        </div>
+
         {{else}}
         <p>No tienes colaboraciones por realizar</p>
         {{/if}}
 
-        <h2>Tus Colaboraciones</h2>
+        <a href="/{{user.username}}/record" class="myButton-tres">Historial</a>
+        <hr>
+
+        {{!-- GLIDE PETICIONES DE COLABORACIÓN --}}
+
+        <h4>Peticiones de colaboración</h4>
         {{#if user.collaborations}}
-        <ul>
-            {{#each user.collaborations}}
-            <li>{{collaborationType}}</li>
-            <li>{{status}}</li>
-            <a href="/{{_id}}/close">Cerrar petición</a>
-            {{/each}}
-        </ul>
+
+        <div class="container">
+            <div class="glide2">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        {{#each user.collaborations}}
+                        <li class="glide__slide">
+                            <div class="peticion">
+                                <p>Colaboración: <br><span class="help-collab">{{collaborationType}}</span></p>
+                                <p>Status: <br><span class="help-collab">{{status}}</span></p>
+                                <a class="link-collab" href="/{{_id}}/close">Cerrar petición</a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><img class="arrow-size"
+                            src="/images/arrows/025-left-arrow-2.png" alt=""></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><img class="arrow-size"
+                            src="/images/arrows/017-right-arrow-2.png" alt=""></button>
+                </div>
+            </div>
+        </div>
+
         {{else}}
         <p>No has solicitado colaboraciones</p>
         {{/if}}
 
-    </div>
-    <div id="goback-button">
-        <button onclick="history.back(-1)" class="myButton-dos">Volver</button>
+        <a href="/{{user.username}}/completed" class="myButton-tres">Historial</a>
+
+        <div id="goback-button">
+            <a href="/" class="myButton-tres">Volver</a>
+        </div>
+
+        {{!-- CONFIGURACIÓN DE GLIDE --}}
+
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
         <script>
-            function goBack() {
-                window.history.back();
+            const config = {
+                type: "carousel",
+                perView: 3,
+                breakpoints: {
+                    600: {
+                        perView: 2
+                    }
+                }
             }
+            new Glide(".glide", config).mount();
+            new Glide('.glide2', config).mount()
         </script>
+
     </div>
 </div>

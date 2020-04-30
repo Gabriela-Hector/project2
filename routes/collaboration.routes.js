@@ -43,6 +43,7 @@ router.get('/:id/complete', checkLoggedIn, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
+
 router.get('/:idCollaboration/close', checkLoggedIn, (req, res, next) => {
     Collaboration.findByIdAndUpdate(req.params.idCollaboration, { status: 'closed' }, { new: true })
         .populate('creatorId')
