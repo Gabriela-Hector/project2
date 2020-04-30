@@ -1,14 +1,33 @@
 <div class="row justify-content-center">
     <div class="col">
         <h1>Hola {{user.username}}</h1>
-        <h2>Tus peticiones</h2>
+
+        <h2>Colaboraciones aceptadas:</h2>
+        {{#if user.acceptedCollaborations}}
+        <ul>
+            {{#each user.acceptedCollaborations}}
+            <li>{{collaborationType}}</li>
+            <li>{{status}}</li>
+            <a href="/{{_id}}/complete">completar petición</a>
+            {{/each}}
+        </ul>
+        {{else}}
+        <p>No tienes colaboraciones por realizar</p>
+        {{/if}}
+
+        <h2>Tus Colaboraciones</h2>
+        {{#if user.collaborations}}
         <ul>
             {{#each user.collaborations}}
             <li>{{collaborationType}}</li>
             <li>{{status}}</li>
-            <a href="/collaboration-request/{{_id}}/close">Cerrar petición</a>
+            <a href="/{{_id}}/close">Cerrar petición</a>
             {{/each}}
         </ul>
+        {{else}}
+        <p>No has solicitado colaboraciones</p>
+        {{/if}}
+
     </div>
     <div id="goback-button">
         <button onclick="history.back(-1)" class="myButton-dos">Volver</button>

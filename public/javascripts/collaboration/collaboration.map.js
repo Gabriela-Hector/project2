@@ -10,8 +10,6 @@ initMap = () => {
         zoom: 6
     }
 
-    let markers
-
     collabMap = new google.maps.Map(document.getElementById('collabMap'), mapOptions)
     const collaborationId = document.getElementById('collabMap').getAttribute('collaborationId')
 

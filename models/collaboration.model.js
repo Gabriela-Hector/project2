@@ -23,7 +23,7 @@ const collaborationSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'accept', 'completed', 'closed'],
+        enum: ['pending', 'accepted', 'completed', 'closed'],
         required: true,
         default: 'pending'
     }
