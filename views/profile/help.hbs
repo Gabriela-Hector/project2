@@ -19,6 +19,7 @@
         </section>
 
         <div class="container">
+            {{#if collaborations}}
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
@@ -38,6 +39,7 @@
                             </div>
                         </li>
                         {{/each}}
+
                     </ul>
                 </div>
                 <div class="glide__arrows" data-glide-el="controls">
@@ -47,6 +49,7 @@
                             src="/images/arrows/017-right-arrow-2.png" alt=""></button>
                 </div>
             </div>
+            {{/if}}
         </div>
         <div id="goback-button">
             <button onclick="history.back(-1)" class="myButton-tres">Volver</button>

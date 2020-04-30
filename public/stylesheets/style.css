@@ -16,6 +16,10 @@ h1, h2, h3, h4 {
   padding: 10px 0;
   margin-top: 5px; }
 
+.audio-sound {
+  width: 250px;
+  height: 30px; }
+
 /* --- SIGN UP & COLLABORATION --- */
 .knowledge-button {
   padding: 3%;

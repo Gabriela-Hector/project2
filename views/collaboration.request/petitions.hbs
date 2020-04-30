@@ -4,6 +4,7 @@
         <h4>Tus peticiones cerradas</h4>
 
         <div class="container">
+            {{#if completedCollabs}}
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
@@ -31,6 +32,7 @@
                             src="/images/arrows/017-right-arrow-2.png" alt=""></button>
                 </div>
             </div>
+            {{/if}}
         </div>
 
         <div id="goback-button">
