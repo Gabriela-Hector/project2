@@ -16,6 +16,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    telephoneNumber: {
+        type: String,
+        required: true,
+    },
     status: {
         type: String,
         enum: ['pending', 'active'],

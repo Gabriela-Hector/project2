@@ -11,7 +11,7 @@ const bcryptSalt = 10
 router.get("/signup", (req, res) => res.render("auth/signup"))
 router.post("/signup", (req, res, next) => {
 
-    const { username, email, password, status, knowledge } = req.body
+    const { username, email, password, telephoneNumber, knowledge } = req.body
 
     if (!username || !password || !email) {
         res.render("auth/signup", { errorMsg: "Rellena todos los campos" })
@@ -27,7 +27,7 @@ router.post("/signup", (req, res, next) => {
             const salt = bcrypt.genSaltSync(bcryptSalt)
             const hashPass = bcrypt.hashSync(password, salt)
 
-            User.create({ username, email, password: hashPass, status, knowledge })
+            User.create({ username, email, password: hashPass, telephoneNumber, knowledge })
                 .then(() => res.redirect("/login"))
                 .catch((err) => res.render("auth/signup", { errorMsg: "No se pudo crear el usuario" }))
         })

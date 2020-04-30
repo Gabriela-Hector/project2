@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="field5">¿En qué puedes echar una mano?</label>
-                <select name="knowledge" class="custom-select" required="true" multiple>
+                <select name="knowledge" size="8" class="custom-select" required="true" multiple>
                     <option class="knowledge-button" value="shopping">Compra y recados</option>
                     <option class="knowledge-button" value="displacement">Desplazamiento</option>
                     <option class="knowledge-button" value="company">Compañía</option>
@@ -26,7 +26,11 @@
                     <option class="knowledge-button" value="DIY">Bricolage</option>
                 </select>
             </div>
-
+            <div class="form-group">
+                <label for="field6">Indique su teléfono</label>
+                <input name="telephoneNumber" type="tel" class="form-control" id="field6" required="true"
+                    placeholder="Teléfono">
+            </div>
             <button type="submit" class="myButton-dos">Registrarme</button>
             {{#if errorMsg}}
             <div id="errorMsg">{{{errorMsg}}}</div>
