@@ -46,7 +46,7 @@ router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu',
 
 router.get('/:username/record', checkLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
-        .populate('collaborations')
+        .populate('acceptedCollaborations')
         .then(user => {
             const completedCollabs = user.acceptedCollaborations.filter(elm => (elm.status === 'completed' || elm.status === 'closed'))
             return res.render('collaboration.request/collab-record', { user, completedCollabs })
@@ -56,7 +56,7 @@ router.get('/:username/record', checkLoggedIn, (req, res, next) => {
 
 router.get('/:username/completed', checkLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
-        .populate('acceptedCollaborations')
+        .populate('collaborations')
         .then(user => {
             const closedCollaborations = user.collaborations.filter(elm => elm.status === 'closed')
             res.render('collaboration.request/petitions', { user, closedCollaborations })
