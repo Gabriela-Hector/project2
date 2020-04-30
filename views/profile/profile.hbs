@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row justify-content-center">
     <div class="col">
         <h1>Hola {{user.username}}</h1>
         <h2>Tus peticiones</h2>
@@ -9,5 +9,13 @@
             <a href="/collaboration-request/{{_id}}/close">Cerrar petición</a>
             {{/each}}
         </ul>
+    </div>
+    <div id="goback-button">
+        <button onclick="history.back(-1)" class="myButton-dos">Volver</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
     </div>
 </div>
