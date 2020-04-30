@@ -123,6 +123,10 @@ width: 15px;
     padding: 10px;
     border-radius: 15px;
     color: #fff;
+    .audio-player{
+      width:80%;
+      height: 40px;
+    }
 }
 
 .span {
@@ -158,6 +162,12 @@ a:hover {
     text-align: center;
     border: none;
     background: none;
+}
+.peticion{
+  .audio-player{
+    width:60%;
+    height: 40px;
+  }
 }
 
 /* --- GLIDE PROFILE --- */

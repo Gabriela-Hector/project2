@@ -3,7 +3,7 @@
         <h3>Hola, {{user.username}}</h3>
 
         <h4>Colaboraciones aceptadas</h4>
-        {{#if user.acceptedCollaborations}}
+        {{#if acceptedCollaborationsList}}
 
         {{!-- GLIDE COLABORACIONES ACEPTADAS  --}}
 
@@ -11,10 +11,11 @@
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        {{#each user.acceptedCollaborations}}
+                        {{#each acceptedCollaborationsList}}
                         <li class="glide__slide">
                             <div class="peticion">
-                                <p>Colaboración: <span class="help-collab">{{collaborationType}}</span></p>
+                                <p><span class="help-collab">{{collaborationType}}</span></p>
+                                <p><audio src="{{audioDescription}}" class="audio-player" controls></audio></p>
                                 <p>Status: <br><span class="help-collab">{{status}}</span></p>
                                 <a class="link-collab" href="/{{_id}}/complete">Completar petición</a>
                             </div>
@@ -40,17 +41,18 @@
 
         {{!-- GLIDE PETICIONES DE COLABORACIÓN --}}
 
-        <h4>Peticiones de colaboración</h4>
-        {{#if user.collaborations}}
+        <h4>Tus peticiones de colaboración</h4>
+        {{#if collaborationsList}}
 
         <div class="container">
             <div class="glide2">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        {{#each user.collaborations}}
+                        {{#each collaborationsList}}
                         <li class="glide__slide">
                             <div class="peticion">
-                                <p>Colaboración: <br><span class="help-collab">{{collaborationType}}</span></p>
+                                <p><span class="help-collab">{{collaborationType}}</span></p>
+                                <p><audio src="{{audioDescription}}" class="audio-player" controls></audio></p>
                                 <p>Status: <br><span class="help-collab">{{status}}</span></p>
                                 <a class="link-collab" href="/{{_id}}/close">Cerrar petición</a>
                             </div>
@@ -86,7 +88,7 @@
                 perView: 3,
                 breakpoints: {
                     600: {
-                        perView: 2
+                        perView: 1
                     }
                 }
             }

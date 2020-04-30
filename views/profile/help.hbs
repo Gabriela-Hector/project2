@@ -25,8 +25,15 @@
                         {{#each collaborations}}
                         <li class="glide__slide">
                             <div class="peticion">
-                                <p class="help-petition">Petición: <br><span
-                                        class="help-collab">{{collaborationType}}</span></p>
+                                <p class="help-petition">
+                                    <span class="help-collab">{{collaborationType}}</span>
+                                </p>
+                                <p>
+                                    <span>Usuario: {{creatorId.username}}</span>
+                                </p>
+                                <div>
+                                    <audio src="{{audioDescription}}" class="audio-player" controls></audio>
+                                </div>
                                 <a class="link-collab" href="/{{_id}}/details">Más detalles</a>
                             </div>
                         </li>
@@ -60,7 +67,7 @@
         perView: 3,
         breakpoints: {
             600: {
-                perView: 2
+                perView: 1
             }
         }
     }

@@ -17,6 +17,7 @@ router.get('/:id/place', (req, res, next) => {
 
 router.get('/:id/details', checkLoggedIn, (req, res, next) => {
     Collaboration.findById(req.params.id)
+        .populate('creatorId')
         .then(foundCollaboration => res.render('profile/collab-details', foundCollaboration))
         .catch(err => next(new Error(err)))
 })
@@ -34,11 +35,11 @@ router.get('/:id/accept', checkLoggedIn, (req, res, next) => {
 router.get('/:id/complete', checkLoggedIn, (req, res, next) => {
     Collaboration.findByIdAndUpdate(req.params.id, { status: 'completed' }, { new: true })
         .then(updatedCollaboration => {
-            User.findByIdAndUpdate(req.user._id, { $pull: { 'acceptedCollaborations': updatedCollaboration._id } }, { new: true })
-                .then(user => {
-                    res.redirect(`/${user.username}/profile`)
-                })
-                .catch(err => next(new Error(err)))
+            // User.findByIdAndUpdate(req.user._id, { $pull: { 'acceptedCollaborations': updatedCollaboration._id } }, { new: true })
+            //     .then(user => {
+            //         res.redirect(`/${user.username}/profile`)
+            //     })
+            //     .catch(err => next(new Error(err)))
         })
         .catch(err => next(new Error(err)))
 })

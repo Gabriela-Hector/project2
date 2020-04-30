@@ -7,12 +7,15 @@
             <div class="glide">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        {{#each closedCollaborations}}
+                        {{#each completedCollabs }}
                         <li class="glide__slide">
                             <div class="peticion">
-                                <p class="help-petition">Petición: <br><span
-                                        class="help-collab">{{collaborationType}}</span>
+                                <p class="help-petition">
+                                    <span class="help-collab">{{collaborationType}}</span>
                                 </p>
+                                {{#if audioDescription}}
+                                <p><audio src="{{audioDescription}}" class="audio-player" controls></audio></p>
+                                {{/if}}
                                 <p class="help-petition">Status: <br><span class="help-collab">{{status}}</span>
                                 </p>
 
@@ -48,7 +51,7 @@
                 perView: 3,
                 breakpoints: {
                     600: {
-                        perView: 2
+                        perView: 1
                     }
                 }
             }

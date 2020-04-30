@@ -4,13 +4,15 @@
         <h4>Detalles de colaboración</h4>
 
         <div class="peticion-dos">
-            <p><strong>Colaboración:</strong> {{collaborationType}}</p>
+            <p><strong>Categoría:</strong> {{collaborationType}}</p>
+            <p>
+                <span>Creada por {{creatorId.username}}</span>
+            </p>
             <p>
                 <strong>Descripción:</strong>
-                <audio src="{{audioDescription}}" controls>Audio</audio>
+                <audio src="{{audioDescription}}" class="audio-player" controls>Audio</audio>
             </p>
             <p><strong>Teléfono:</strong> {{telephoneNumber}}</p>
-            <p><strong>Status</strong>: {{status}}</p>
         </div>
         <br>
         <section>

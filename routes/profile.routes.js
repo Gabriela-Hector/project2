@@ -21,6 +21,7 @@ router.get('/findCollaborations', (req, res, next) => {
 //Encuentra collaboraciones que coincidan con tus conocimientos, esten pendientes y no seas el creador
 router.get('/:username/help', checkLoggedIn, (req, res, next) => {
     Collaboration.find({ $and: [{ collaborationType: { $in: req.user.knowledge } }, { status: 'pending' }, { creatorId: { $ne: req.user._id } }] })
+        .populate('creatorId')
         .then(foundCollaborations => res.render('profile/help', { collaborations: foundCollaborations, user: req.user }))
         .catch(err => next(new Error(err)))
 })
@@ -31,30 +32,31 @@ router.get('/:username/profile', checkLoggedIn, (req, res, next) => {
         .populate('collaborations')
         .populate('acceptedCollaborations')
         .then(foundUser => {
-            res.render('profile/profile', { user: foundUser })
+            const collabs = foundUser.collaborations.filter(elm => elm.status != 'closed')
+            console.log(collabs)
+            const acceptedCollabs = foundUser.acceptedCollaborations.filter(elm => elm.status === 'accepted')
+            res.render('profile/profile', { user: foundUser, collaborationsList: collabs, acceptedCollaborationsList: acceptedCollabs })
         })
         .catch(err => next(new Error(err)))
 })
 router.get('/:username', checkLoggedIn, (req, res) => res.render('profile/menu', { user: req.user }))
 
-router.get('/:username/completed', checkLoggedIn, (req, res, next) => {
+router.get('/:username/record', checkLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
         .populate('acceptedCollaborations')
         .then(user => {
-            console.log('AQUI ESTA EL FUCKIN USER', user)
             const completedCollabs = user.acceptedCollaborations.filter(elm => (elm.status === 'completed' || elm.status === 'closed'))
-            console.log('AQUI ESTAN LAS FUCKIN COMPLETED COLLABS', completedCollabs)
-            return res.render('collaboration.request/petitions', { user, completedCollabs })
+            return res.render('collaboration.request/collab-record', { user, completedCollabs })
         })
         .catch(err => next(new Error(err)))
 })
 
-router.get('/:username/record', checkLoggedIn, (req, res, next) => {
+router.get('/:username/completed', checkLoggedIn, (req, res, next) => {
     User.findById(req.user._id)
         .populate('collaborations')
         .then(user => {
             const closedCollaborations = user.collaborations.filter(elm => elm.status === 'closed')
-            res.render('collaboration.request/collab-record', { user, closedCollaborations })
+            res.render('collaboration.request/petitions', { user, closedCollaborations })
         })
         .catch(err => next(new Error(err)))
 })

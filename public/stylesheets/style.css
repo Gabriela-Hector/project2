@@ -100,6 +100,9 @@ h1, h2, h3, h4 {
   padding: 10px;
   border-radius: 15px;
   color: #fff; }
+  .peticion-dos .audio-player {
+    width: 80%;
+    height: 40px; }
 
 .span {
   font-weight: 500;
@@ -127,6 +130,10 @@ a:hover {
   text-align: center;
   border: none;
   background: none; }
+
+.peticion .audio-player {
+  width: 60%;
+  height: 40px; }
 
 /* --- GLIDE PROFILE --- */
 .myButton {
