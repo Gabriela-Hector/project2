@@ -54,8 +54,8 @@ h1, h2, h3, h4 {
 .colaborar-span span {
   font-size: 40px; }
 
-p {
-  font-size: 25px; }
+.colaborar-span p {
+  font-size: 30px; }
 
 .text-index {
   transform: translateY(120px);
