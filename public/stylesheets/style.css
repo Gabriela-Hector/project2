@@ -35,6 +35,12 @@ h1, h2, h3, h4 {
   #collaboration-form #lng {
     display: none; }
 
+.audio-description #stop-record {
+  display: none; }
+
+.audio-description #msg-record {
+  display: none; }
+
 #signup-form .custom-select {
   text-align: center;
   border: none; }

@@ -14,8 +14,8 @@ router.get('/', (req, res) => res.render('collaboration.request/request'))
 
 //CREATE COLLABORATION
 router.post('/', (req, res, next) => {
-    const { collaborationType, lat, lng, telephoneNumber } = req.body
-    Collaboration.create({ collaborationType, location: { coordinates: [lat, lng] }, telephoneNumber, creatorId: req.user._id })
+    const { collaborationType, lat, lng, telephoneNumber, audioDescription } = req.body
+    Collaboration.create({ collaborationType, audioDescription, location: { coordinates: [lat, lng] }, telephoneNumber, creatorId: req.user._id })
         .then(newCollaboration => {
             User.findByIdAndUpdate(newCollaboration.creatorId, { $push: { 'collaborations': newCollaboration._id } })
                 .then(res.redirect('/'))

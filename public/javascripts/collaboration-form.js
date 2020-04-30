@@ -45,11 +45,13 @@ getLocation = () => {
 }
 
 
-const inputAudio = document.querySelector('.audioDescription input')
+const inputAudio = document.querySelector('.audio-description input')
 
 let audioChunks = []
 let rec
-let recordedAudio = document.querySelector('#recordedAudio')
+const startRecord = document.querySelector('#record')
+const stopRecord = document.querySelector('#stop-record')
+const msgRecord = document.querySelector('#msg-record')
 
 navigator.mediaDevices.getUserMedia({ audio: true })
     .then(stream => { handlerFunction(stream) })
@@ -64,26 +66,20 @@ function handlerFunction(stream) {
             let formData = new FormData()
             formData.append("audioRequest", blob)
             axios.post('/collaboration-request/uploadAudio', formData)
-                .then(response => console.log(response.data))
+                .then(response => inputAudio.value = response.data)
                 .catch(err => console.log("error", err))
         }
     }
 }
 
-record.onclick = e => {
-    console.log('I was clicked')
-    record.disabled = true
-    record.style.backgroundColor = "blue"
-    stopRecord.disabled = false
+startRecord.onclick = e => {
+    startRecord.style.display = 'none'
+    stopRecord.style.display = 'inline'
     audioChunks = []
     rec.start()
 }
 stopRecord.onclick = e => {
-    console.log("I was clicked")
-    record.disabled = false
-    stop.disabled = true
-    record.style.backgroundColor = "red"
+    stopRecord.style.display = 'none'
+    msgRecord.style.display = 'inline'
     rec.stop()
 }
-
-// //Copyright (c) 2020 by Jeremy Gottfried (https://codepen.io/jeremyagottfried/pen/bMqyNZ)

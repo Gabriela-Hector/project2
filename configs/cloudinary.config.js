@@ -9,7 +9,7 @@ cloudinary.config({
 var storage = cloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'recordings',
+        folder: 'Ya-va-recordings',
         allowedFormats: ['mp3'],
         format: 'mp3',
         resource_type: 'video'

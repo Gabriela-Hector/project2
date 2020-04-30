@@ -19,9 +19,14 @@
                 </select>
             </div>
 
-            <div class="form-group audioDescription">
-                <label for="field2">Graba un audio:</label>
-                <input type="text" id="field2" name="audioDescription">
+            <div class="form-group audio-description">
+                <label for="field2">A continuación graba una breve descripción de lo que necesita:</label>
+                <p>
+                    <span id="record" class="myButton">Pulsa para grabar</span>
+                    <span id="stop-record" class="myButton">Mandar grabación</span>
+                    <div id="msg-record" class="peticion-dos">Su grabación se ha guardado con éxito</div>
+                </p>
+                <input type="hidden" id="field2" name="audioDescription">
             </div>
 
             <div class="form-group geolocation">
@@ -38,17 +43,7 @@
 
             <button type="submit" class="myButton-dos">Confirmar</button>
 
-            {{#if errorMsg}}
-            <div id="errorMsg">{{{errorMsg}}}</div>
-            {{/if}}
         </form>
-        <p>
-            <button id="record">record</button>
-            <button id="stopRecord" disabled>Stop</button>
-        </p>
-        <p>
-            <audio id="recordedAudio"></audio>
-        </p>
 
         <div id="goback-button">
             <button onclick="history.back(-1)" class="myButton-dos">Volver</button>

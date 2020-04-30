@@ -45,6 +45,15 @@ h1, h2, h3, h4 {
   }
 }
 
+.audio-description{
+  #stop-record{
+    display: none;
+  }
+  #msg-record{
+    display: none;
+  }
+}
+
 #signup-form .custom-select {
   text-align: center;
     border: none;
