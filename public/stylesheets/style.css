@@ -1,7 +1,7 @@
 body {
   text-align: center;
   font-weight: 100;
-  background: #fffefa; }
+  background-color: rgba(117, 117, 201, 0.1); }
 
 h1, h2, h3, h4 {
   font-weight: 200;
@@ -75,11 +75,15 @@ h1, h2, h3, h4 {
   font-size: 20px; }
 
 .fondo {
-  background-image: url("../images/YA-VA-4.png");
+  background-image: url("../images/YA-VA-5.png");
   background-position: top;
   height: 706px;
   background-size: 100%;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 100vh;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); }
 
 #logo-yava {
   display: block;
@@ -141,7 +145,7 @@ a:hover {
 
 /* --- GLIDE PROFILE --- */
 .myButton {
-  width: 80%;
+  width: 75%;
   background-color: #7575c9;
   border-radius: 25px;
   display: inline-block;
@@ -214,6 +218,7 @@ a:hover {
 .knowledge-field {
   display: none; }
 
+/*--- SCREENS ---*/
 .glide {
   position: relative;
   width: 100%;
