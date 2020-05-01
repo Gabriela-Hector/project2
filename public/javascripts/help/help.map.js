@@ -7,7 +7,7 @@ const getPlaces = () => {
 
     axios.get(`/findCollaborations?knowledgeList=${knowledgeList}`)
         .then(response => placeCollaboration(response.data))
-        .catch(error => console.log(error))
+        .catch(error => console.erro(error))
 }
 
 const placeCollaboration = collaborations => {

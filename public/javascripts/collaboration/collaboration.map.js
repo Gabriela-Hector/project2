@@ -16,7 +16,6 @@ initMap = () => {
     axios.get(`/${collaborationId}/place`)
         .then(response => putMarkers(response.data))
         .catch(error => console.log(error))
-
 }
 
 function putMarkers(collaboration) {

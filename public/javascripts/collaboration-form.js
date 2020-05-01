@@ -44,7 +44,6 @@ getLocation = () => {
     })
 }
 
-
 const inputAudio = document.querySelector('.audio-description input')
 
 let audioChunks = []
