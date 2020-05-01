@@ -5,7 +5,7 @@ const cloudinaryAudio = require('../configs/cloudinary.config')
 const User = require("../models/user.model")
 const Collaboration = require("../models/collaboration.model")
 
-router.get('/', (req, res) => res.render('collaboration.request/request'))
+router.get('/', (req, res) => res.render('collaboration.request/request', { user: req.user }))
 
 //CREATE COLLABORATION
 router.post('/', (req, res, next) => {
